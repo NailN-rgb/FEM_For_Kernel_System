@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 
-def Force_Vector_Calculation(f, x_mesh, quad_points=1):
+def force_vector_calculation(f, x_mesh, quad_points=1):
     n_points = len(x_mesh)
     F = np.zeros([n_points])
 

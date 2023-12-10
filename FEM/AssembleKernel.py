@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 
-def Local_Stiffnes_Matrix(a, b, x_left, x_right):
+def local_stiffnes_matrix(a, b, x_left, x_right):
     # x_left and x_right values - left and right parts or element
 
     h = x_right - x_left
@@ -14,7 +14,7 @@ def Local_Stiffnes_Matrix(a, b, x_left, x_right):
     return Kernel
 
 
-def AssembleK_Matrix(a, b, x_mesh, quad_points=1):
+def assemble_k_matrix(a, b, x_mesh, quad_points=1):
     global Kernel_Local
     n_points = len(x_mesh)
     n_elements = n_points - 1
@@ -25,7 +25,7 @@ def AssembleK_Matrix(a, b, x_mesh, quad_points=1):
     K = np.zeros([n_points, n_points])
     for i in range(n_elements):
         if quad_points == 1:
-            Kernel_Local = Local_Stiffnes_Matrix(a, b, x_mesh[i], x_mesh[i + 1])
+            Kernel_Local = local_stiffnes_matrix(a, b, x_mesh[i], x_mesh[i + 1])
 
         for j in range(deg_of_freedom):
             for k in range(deg_of_freedom):
